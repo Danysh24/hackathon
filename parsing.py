@@ -3,10 +3,10 @@ from bs4 import BeautifulSoup as bs
 import lxml
 import csv
 
-def write_csv(data):
+def write_csv(mac):
     with open('notebook.csv', 'a') as nout:
         writer = csv.writer(nout)
-        writer.writerow((data['name'], data['price'], data['img']))
+        writer.writerow((mac['название'], mac['цена'], mac['изображение']))
 
 
 def get_html(url):
@@ -31,9 +31,9 @@ def get_products(html):
         except:
             img = ''
        
-        data={'name': name, 'price': price, 'img': img}
+        mac={'название': name, 'цена': price, 'изображение': img}
     
-        write_csv(data)
+        write_csv(mac)
 
 
 
@@ -59,7 +59,7 @@ def main():
 
 with open('notebook.csv', 'w') as file:
     write = csv.writer(file)
-    write.writerow(['name', 'price', 'img'])
+    write.writerow(['название', 'цена', 'изображение'])
 
 
 main()
